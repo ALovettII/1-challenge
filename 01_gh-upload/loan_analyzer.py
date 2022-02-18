@@ -23,7 +23,6 @@ print(f"Total loan cost: ${loan_total}")
 print(f"Average loan cost: ${loan_average:.2f}")
 
 
-
 """Part 2: Analyze Loan Data.
 
 Analyze the loan to determine the investment evaluation.
@@ -55,23 +54,31 @@ loan = {
     "future_value": 1000,
 }
 
-# @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
-# Print each variable.
-# YOUR CODE HERE!
+# Using get() function to retrieve future value & remaining months
+future_value = loan.get("future_value")
+remaining_months = loan.get("remaining_months")
+
+#Printing future value and remaining months of the loan
+print(f"Future value of the loan: ${future_value}")
+print("Months remaining on loan:", remaining_months)
 
 
 # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
 # Use a minimum required return of 20% as the discount rate.
-#   You'll want to use the **monthly** version of the present value formula.
-#   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
 
-# YOUR CODE HERE!
+present_value = future_value / (1 + .20/remaining_months)
 
-# If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
+
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
-#    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
-#    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
-# YOUR CODE HERE!
+
+# Retrieving loan price from "loan" dictionary
+loan_price = loan.get("loan_price")
+
+if present_value >= loan_price:
+    print("Loan worth at least the cost to buy.")
+else:
+    print("Loan too expensive; not worth the price")
+
 
 
 """Part 3: Perform Financial Calculations.
